@@ -141,6 +141,7 @@ void LXQtTaskButton::updateText()
 void LXQtTaskButton::updateIcon()
 {
     QIcon ico;
+    QString appName = "firefox"; // Define the application name to check
     if (mParentTaskBar->isIconByClass())
     {
         ico = XdgIcon::fromTheme(QString::fromUtf8(KWindowInfo{mWindow, NET::Properties(), NET::WM2WindowClass}.windowClassClass()).toLower());
@@ -148,7 +149,7 @@ void LXQtTaskButton::updateIcon()
     if (ico.isNull())
     {
         int devicePixels = mIconSize * devicePixelRatioF();
-        if (appName.toLower() == "firefox") {
+        if (QString::compare(KWindowInfo(mWindow, NET::WMName).name(), appName, Qt::CaseInsensitive) == 0) {
              // set custom icon for firefox
             ico = QIcon("/usr/share/icons/hicolor/scalable/apps/cinnamon-preferences-color.svg");
         } else {
