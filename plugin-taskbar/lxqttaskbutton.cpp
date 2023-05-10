@@ -141,7 +141,7 @@ void LXQtTaskButton::updateText()
 void LXQtTaskButton::updateIcon()
 {
     QIcon ico;
-    QString appName = "firefox"; // Define the application name to check
+    QString appName = QStringLiteral("firefox"); // Define the application name to check
     if (mParentTaskBar->isIconByClass())
     {
         ico = XdgIcon::fromTheme(QString::fromUtf8(KWindowInfo{mWindow, NET::Properties(), NET::WM2WindowClass}.windowClassClass()).toLower());
