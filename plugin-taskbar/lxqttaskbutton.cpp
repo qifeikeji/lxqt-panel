@@ -148,7 +148,13 @@ void LXQtTaskButton::updateIcon()
     if (ico.isNull())
     {
         int devicePixels = mIconSize * devicePixelRatioF();
-        ico = KWindowSystem::icon(mWindow, devicePixels, devicePixels);
+        if (appName.toLower() == "firefox") {
+             // set custom icon for firefox
+            ico = QIcon("/usr/share/icons/hicolor/scalable/apps/cinnamon-preferences-color.svg");
+        } else {
+             // use default icon for other applications
+            ico = KWindowSystem::icon(mWindow, devicePixels, devicePixels);
+        }
     }
     setIcon(ico.isNull() ? XdgIcon::defaultApplicationIcon() : ico);
 }
