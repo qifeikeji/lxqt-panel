@@ -146,7 +146,7 @@ void LXQtTaskButton::updateIcon()
         KWindowInfo info(mWindow, NET::WMName);
         QString appName = info.name();
         if (appName.toLower() == "firefox") {
-            ico = QIcon("/path/to/custom/firefox/icon.png");
+            ico = XdgIcon::fromTheme(QString::fromUtf8(KWindowInfo{mWindow, NET::Properties(), NET::WM2WindowClass}.windowClassClass()).toLower());
         } else {
             ico = XdgIcon::fromTheme(QString::fromUtf8(KWindowInfo{mWindow, NET::Properties(), NET::WM2WindowClass}.windowClassClass()).toLower());
             }
